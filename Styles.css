@@ -1,0 +1,292 @@
+/* =================================================================
+   ROLEXSA · styles.css (Layout Administrativo)
+   Identidad visual según DN01 §4.5.2
+================================================================= */
+
+:root {
+
+  --rx-blue-primary: #0B5394;
+  --rx-blue-medium:  #1B75BB;
+  --rx-teal-dark:    #22A7B6;
+  --rx-teal-light:   #30B8C4;
+  --rx-ink:          #333333;
+  --rx-muted:        #666666;
+  --rx-bg:           #f5f7fa;
+  --rx-white:        #ffffff;
+
+
+  --rx-font: "Inter", "Segoe UI", system-ui, sans-serif;
+  
+
+  --rx-danger:    #b42318;
+  --rx-danger-bg: #fbe6e3;
+  
+
+  --bs-primary: #0B5394;
+  --bs-body-font-family: var(--rx-font);
+  --bs-body-bg: var(--rx-bg);
+  --bs-body-color: var(--rx-ink);
+  --bs-border-color: #e1e8f1;
+}
+
+body {
+  font-family: var(--rx-font);
+  font-size: 14px;
+  color: var(--rx-ink);
+  background-color: var(--rx-bg);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+
+h1, .h1 { font-size: 28px; font-weight: 700; color: var(--rx-blue-primary); margin: 0; }
+h2, .h2 { font-size: 20px; font-weight: 600; color: var(--rx-ink); margin: 0; }
+h5, .h5 { font-size: 16px; font-weight: 600; color: var(--rx-ink); margin: 0; }
+.text-muted { color: var(--rx-muted) !important; }
+
+/* ============================================================
+   LAYOUT: Sidebar + Main Content
+============================================================ */
+.rx-app-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+
+.rx-sidebar {
+  width: 260px;
+  background-color: #061c38; 
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
+  z-index: 1000;
+  transition: all 0.3s;
+}
+
+.rx-sidebar-brand {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.rx-sidebar-brand h4 {
+  color: #ffffff;
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+
+.rx-sidebar-nav {
+  padding: 16px 12px;
+  flex: 1;
+  overflow-y: auto;
+}
+.rx-sidebar-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #889cb8;
+  margin: 24px 12px 8px;
+  font-weight: 600;
+}
+.rx-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: #b0c4de !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  transition: all 0.2s;
+}
+.rx-sidebar-link:hover, .rx-sidebar-link.active {
+  background-color: var(--rx-blue-primary);
+  color: #ffffff !important;
+}
+.rx-sidebar-link svg {
+  width: 20px; height: 20px;
+  fill: currentColor;
+}
+
+.rx-sidebar-user {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rx-avatar {
+  width: 36px; height: 36px;
+  background: var(--rx-blue-primary);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 14px; color: #fff;
+}
+.rx-sidebar-user-info { line-height: 1.2; }
+.rx-sidebar-user-info strong { display: block; font-size: 14px; color: #fff; }
+.rx-sidebar-user-info span { font-size: 12px; color: #889cb8; }
+
+
+.rx-main {
+  margin-left: 260px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+.rx-topbar {
+  height: 70px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e1e8f1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.rx-topbar-title { font-size: 14px; color: var(--rx-muted); font-weight: 500; }
+.rx-topbar-search {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--rx-bg);
+  padding: 8px 16px; border-radius: 20px;
+  width: 300px; border: 1px solid transparent;
+}
+.rx-topbar-search:focus-within { border-color: var(--rx-blue-primary); }
+.rx-topbar-search input {
+  border: none; background: transparent; outline: none;
+  width: 100%; font-size: 14px; color: var(--rx-ink);
+}
+.rx-topbar-user { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+
+/* --- CONTENT AREA --- */
+.rx-content { padding: 32px; flex: 1; }
+
+/* ============================================================
+   COMPONENTES (Estilo Radisson)
+============================================================ */
+
+/* Stat Cards */
+.rx-stat-card {
+  background: #fff;
+  border: 1px solid #e1e8f1;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  height: 100%;
+}
+.rx-stat-icon {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.rx-stat-icon.blue { background: #e6f0fa; color: var(--rx-blue-primary); }
+.rx-stat-icon.teal { background: #e0f5f7; color: var(--rx-teal-dark); }
+.rx-stat-icon.red  { background: var(--rx-danger-bg); color: var(--rx-danger); }
+.rx-stat-icon.gray { background: #f0f2f5; color: var(--rx-muted); }
+.rx-stat-icon svg { width: 24px; height: 24px; fill: currentColor; }
+
+.rx-stat-info { display: flex; flex-direction: column; }
+.rx-stat-info span { font-size: 13px; color: var(--rx-muted); font-weight: 500; }
+.rx-stat-info strong { font-size: 24px; color: var(--rx-ink); font-weight: 700; line-height: 1.2; }
+
+/* Panels (Tablas y Listas) */
+.rx-panel {
+  background: #fff;
+  border: 1px solid #e1e8f1;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.rx-panel-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e1e8f1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rx-panel-title {
+  font-size: 16px; font-weight: 600; color: var(--rx-ink);
+  display: flex; align-items: center; gap: 8px;
+}
+.rx-panel-body { padding: 24px; }
+
+
+.rx-empty {
+  text-align: center; padding: 40px 20px; color: var(--rx-muted);
+}
+.rx-empty svg { width: 48px; height: 48px; fill: #cfd9e6; margin-bottom: 12px; }
+
+
+.rx-tabs { display: flex; gap: 8px; border-bottom: 1px solid #e1e8f1; margin-bottom: 20px; }
+.rx-tab {
+  padding: 10px 16px; font-weight: 600; font-size: 14px;
+  color: var(--rx-muted); text-decoration: none; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; transition: all 0.2s;
+}
+.rx-tab:hover { color: var(--rx-blue-primary); }
+.rx-tab.active { color: var(--rx-blue-primary); border-bottom-color: var(--rx-blue-primary); }
+
+
+.btn { font-family: var(--rx-font); font-size: 14px; font-weight: 600; border-radius: 8px; padding: 8px 16px; }
+.btn-primary {
+  background: var(--rx-blue-primary); border-color: var(--rx-blue-primary); color: #fff;
+}
+.btn-primary:hover { background: var(--rx-blue-medium); border-color: var(--rx-blue-medium); }
+.btn-outline-primary { color: var(--rx-blue-primary); border-color: var(--rx-blue-primary); }
+.btn-outline-primary:hover { background: var(--rx-blue-primary); color: #fff; }
+
+
+.rx-table { margin: 0; font-size: 14px; }
+.rx-table thead th {
+  background: #f9fbfd; color: var(--rx-muted);
+  font-weight: 600; font-size: 12px; text-transform: uppercase;
+  border-bottom: 1px solid #e1e8f1; border-top: none;
+  padding: 12px 24px;
+}
+.rx-table tbody td {
+  padding: 16px 24px; vertical-align: middle; border-bottom: 1px solid #e1e8f1;
+}
+
+
+.rx-badge { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.rx-badge-ok   { background: #e0f5f7; color: #0e5d66; }
+.rx-badge-low  { background: #e6f0fa; color: var(--rx-blue-primary); }
+.rx-badge-out  { background: var(--rx-danger-bg); color: var(--rx-danger); }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 992px) {
+  .rx-sidebar { transform: translateX(-100%); }
+  .rx-main { margin-left: 0; }
+}
+
+/* ============================================================
+   CONTROL DE PANTALLAS 
+============================================================ */
+.screen {
+  display: none;
+}
+.screen.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

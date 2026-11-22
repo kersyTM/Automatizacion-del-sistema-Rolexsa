@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rolexsa · Panel Administrativo</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="rx-app-wrapper">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="rx-sidebar">
+    <div class="rx-sidebar-brand">
+      <h4>Rolexsa</h4>
+    </div>
+    
+    <div class="rx-sidebar-nav">
+      <a href="#dashboard" class="rx-sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        Panel Principal
+      </a>
+      
+      <div class="rx-sidebar-title">Operaciones</div>
+      <a href="#inventario" class="rx-sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-.9-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4h16v3z"/></svg>
+        Inventario
+      </a>
+      <a href="#proveedores" class="rx-sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Proveedores
+      </a>
+      <a href="#clientes" class="rx-sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        Clientes
+      </a>
+
+      <div class="rx-sidebar-title">Inteligencia Artificial</div>
+      <a href="#red-neuronal" class="rx-sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M21 11.18V9.72c0-.47-.16-.92-.46-1.28L16.6 3.72c-.38-.46-.94-.72-1.54-.72H8.94c-.6 0-1.16.26-1.54.72L3.46 8.44c-.3.36-.46.81-.46 1.28v1.46c0 .47.16.92.46 1.28l4.14 4.72c.38.46.94.72 1.54.72h6.12c.6 0 1.16-.26 1.54-.72l4.14-4.72c.3-.36.46-.81.46-1.28zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+        Red Neuronal
+      </a>
+      <a href="#agente" class="rx-sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+        Agente Virtual
+      </a>
+
+      <div class="rx-sidebar-title">Administración</div>
+      <a href="#usuarios" class="rx-sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Usuarios y Roles
+      </a>
+    </div>
+
+    <div class="rx-sidebar-user">
+      <div class="rx-avatar">AD</div>
+      <div class="rx-sidebar-user-info">
+        <strong>Admin Rolexsa</strong>
+        <span>Administrador</span>
+      </div>
+      <a href="#login" class="ms-auto" style="color:#889cb8;" title="Cerrar sesión">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="rx-main">
+    
+    <!-- Topbar Global -->
+    <header class="rx-topbar">
+      <div class="rx-topbar-title">Sistema de Gestión de Repuestos</div>
+      <div class="rx-topbar-search">
+        <svg width="16" height="16" fill="#666" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" placeholder="Buscar repuesto, ticket o proveedor...">
+      </div>
+      <div class="rx-topbar-user">
+        <span style="color:var(--rx-muted); font-size:13px;">Nov 20, 2026</span>
+        <div class="rx-avatar" style="width:32px; height:32px; font-size:12px;">AD</div>
+      </div>
+    </header>
+
+    <!-- ================= CONTENIDO DINÁMICO ================= -->
+    <div class="rx-content">
+
+      <!-- 1. DASHBOARD -->
+      <section id="dashboard" class="screen active">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h1>Panel Principal</h1>
+            <p class="text-muted mt-1 mb-0">Resumen general del inventario y la inteligencia artificial.</p>
+          </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+          <div class="col-md-4 col-xl-2">
+            <div class="rx-stat-card">
+              <div class="rx-stat-icon blue"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-.9-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4h16v3z"/></svg></div>
+              <div class="rx-stat-info"><span>Repuestos</span><strong>128</strong></div>
+            </div>
+          </div>
+          <div class="col-md-4 col-xl-2">
+            <div class="rx-stat-card">
+              <div class="rx-stat-icon red"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+              <div class="rx-stat-info"><span>Agotados</span><strong>3</strong></div>
+            </div>
+          </div>
+          <div class="col-md-4 col-xl-2">
+            <div class="rx-stat-card">
+              <div class="rx-stat-icon teal"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+              <div class="rx-stat-info"><span>Proveedores</span><strong>12</strong></div>
+            </div>
+          </div>
+          <div class="col-md-4 col-xl-2">
+            <div class="rx-stat-card">
+              <div class="rx-stat-icon teal"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+              <div class="rx-stat-info"><span>Clientes</span><strong>45</strong></div>
+            </div>
+          </div>
+          <div class="col-md-4 col-xl-2">
+            <div class="rx-stat-card">
+              <div class="rx-stat-icon gray"><svg viewBox="0 0 24 24"><path d="M21 11.18V9.72c0-.47-.16-.92-.46-1.28L16.6 3.72c-.38-.46-.94-.72-1.54-.72H8.94c-.6 0-1.16.26-1.54.72L3.46 8.44c-.3.36-.46.81-.46 1.28v1.46c0 .47.16.92.46 1.28l4.14 4.72c.38.46.94.72 1.54.72h6.12c.6 0 1.16-.26 1.54-.72l4.14-4.72c.3-.36.46-.81.46-1.28zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg></div>
+              <div class="rx-stat-info"><span>Modelo IA</span><strong>v1.2</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="rx-panel">
+              <div class="rx-panel-header">
+                <div class="rx-panel-title">Requieren atención (Bajo stock)</div>
+                <a href="#inventario" class="text-decoration-none" style="color:var(--rx-blue-primary); font-weight:600;">Ver todos</a>
+              </div>
+              <div class="rx-panel-body text-center py-4">
+                <div class="rx-empty">
+                  <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                  <p class="mb-0">Todos los repuestos tienen stock suficiente.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="rx-panel h-100">
+              <div class="rx-panel-header">
+                <div class="rx-panel-title">Carga de Inventario</div>
+              </div>
+              <div class="rx-panel-body">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted">Rodamientos</span>
+                  <strong>65%</strong>
+                </div>
+                <div class="progress mb-3" style="height: 6px; background: #e1e8f1;">
+                  <div class="progress-bar" style="width: 65%; background: var(--rx-blue-primary);"></div>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted">Retenes</span>
+                  <strong>25%</strong>
+                </div>
+                <div class="progress mb-3" style="height: 6px; background: #e1e8f1;">
+                  <div class="progress-bar" style="width: 25%; background: var(--rx-teal-dark);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. INVENTARIO -->
+      <section id="inventario" class="screen">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h1>Inventario</h1>
+            <p class="text-muted mt-1 mb-0">Todos los repuestos registrados en el sistema.</p>
+          </div>
+          <button class="btn btn-primary" data-alert="Formulario de nuevo repuesto simulado">+ Nuevo Repuesto</button>
+        </div>
+
+        <div class="rx-panel">
+          <div class="rx-panel-body pb-0">
+            <div class="rx-tabs">
+              <a href="#" class="rx-tab active">Todos</a>
+              <a href="#" class="rx-tab">Disponibles</a>
+              <a href="#" class="rx-tab">Bajo Stock</a>
+              <a href="#" class="rx-tab">Agotados</a>
+            </div>
+            <div class="d-flex gap-2 mb-3">
+              <input type="text" class="form-control" placeholder="Buscar por código o descripción..." style="max-width: 300px;">
+              <button class="btn btn-outline-primary">Buscar</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table rx-table">
+              <thead>
+                <tr><th>Código</th><th>Repuesto</th><th>Marca</th><th>Stock Actual</th><th>Stock Mínimo</th><th>Estado</th><th>Acciones</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>6205-2RS</strong></td><td>Rodamiento 6205</td><td>SKF</td><td>45</td><td>10</td>
+                  <td><span class="rx-badge rx-badge-ok">Disponible</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" data-alert="Detalle simulado">Ver</button></td>
+                </tr>
+                <tr>
+                  <td><strong>RET-25</strong></td><td>Retén 25 mm</td><td>NOK</td><td>0</td><td>5</td>
+                  <td><span class="rx-badge rx-badge-out">Agotado</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" data-alert="Detalle simulado">Ver</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PROVEEDORES -->
+      <section id="proveedores" class="screen">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h1>Proveedores</h1>
+            <p class="text-muted mt-1 mb-0">Directorio de empresas que suministran repuestos.</p>
+          </div>
+          <button class="btn btn-primary" data-alert="Formulario de nuevo proveedor simulado">+ Nuevo Proveedor</button>
+        </div>
+
+        <div class="rx-panel">
+          <div class="rx-panel-body pb-0">
+            <div class="d-flex gap-2 mb-3">
+              <input type="text" class="form-control" placeholder="Buscar por nombre o RUC..." style="max-width: 300px;">
+              <button class="btn btn-outline-primary">Buscar</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table rx-table">
+              <thead>
+                <tr><th>ID</th><th>Nombre</th><th>Identificación</th><th>Correo</th><th>Estado</th><th>Acciones</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td><td>Rodamientos del Pacífico</td><td>J-12345678</td><td>ventas@rp.com</td>
+                  <td><span class="rx-badge rx-badge-ok">Activo</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" data-alert="Editar simulado">Editar</button></td>
+                </tr>
+                <tr>
+                  <td>2</td><td>Repuestos del Norte</td><td>J-11223344</td><td>info@rn.com</td>
+                  <td><span class="rx-badge rx-badge-low">Inactivo</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" data-alert="Editar simulado">Editar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. CLIENTES -->
+      <section id="clientes" class="screen">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h1>Clientes</h1>
+            <p class="text-muted mt-1 mb-0">Base de datos de clientes registrados.</p>
+          </div>
+          <button class="btn btn-primary" data-alert="Formulario de nuevo cliente simulado">+ Nuevo Cliente</button>
+        </div>
+
+        <div class="rx-panel">
+          <div class="rx-panel-body pb-0">
+            <div class="d-flex gap-2 mb-3">
+              <input type="text" class="form-control" placeholder="Buscar por RUC/NIT..." style="max-width: 300px;">
+              <button class="btn btn-outline-primary">Buscar</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table rx-table">
+              <thead>
+                <tr><th>ID</th><th>Cliente</th><th>RUC/NIT</th><th>Tipo</th><th>Estado</th><th>Acciones</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td><td>Taller El Motor</td><td>001-010101-0001A</td><td>Empresa</td>
+                  <td><span class="rx-badge rx-badge-ok">Activo</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" data-alert="Editar simulado">Editar</button></td>
+                </tr>
+                <tr>
+                  <td>2</td><td>Juan Pérez</td><td>001-020202-0002B</td><td>Persona</td>
+                  <td><span class="rx-badge rx-badge-ok">Activo</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" data-alert="Editar simulado">Editar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. RED NEURONAL -->
+      <section id="red-neuronal" class="screen">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h1>Red Neuronal</h1>
+            <p class="text-muted mt-1 mb-0">Generación de pronósticos y control de versiones del modelo.</p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="rx-panel">
+              <div class="rx-panel-header">
+                <div class="rx-panel-title">Generar Pronóstico</div>
+              </div>
+              <div class="rx-panel-body">
+                <div class="mb-3">
+                  <label class="form-label">Repuesto</label>
+                  <select class="form-select">
+                    <option>6205-2RS · Rodamiento 6205</option>
+                    <option>6206-2RS · Rodamiento 6206</option>
+                  </select>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label">Período a estimar</label>
+                  <select class="form-select">
+                    <option>Próximo mes</option>
+                    <option>Próximos 3 meses</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary w-100" id="btnPronostico">Ejecutar Red Neuronal</button>
+                
+                <div id="pronosticoResult" class="alert mt-3 d-none" style="background:#e0f5f7; color:#0e5d66; border:none;">
+                  <strong>Pronóstico generado:</strong> 52 unidades.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="rx-panel">
+              <div class="rx-panel-header">
+                <div class="rx-panel-title">Versiones del Modelo</div>
+              </div>
+              <div class="table-responsive">
+                <table class="table rx-table">
+                  <thead><tr><th>Versión</th><th>Fecha</th><th>MAE</th><th>Estado</th></tr></thead>
+                  <tbody>
+                    <tr><td>v1.2</td><td>10/11/2026</td><td>4.2</td><td><span class="rx-badge rx-badge-ok">Activa</span></td></tr>
+                    <tr><td>v1.1</td><td>28/10/2026</td><td>5.8</td><td><span class="rx-badge rx-badge-low">Histórica</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. AGENTE VIRTUAL -->
+      <section id="agente" class="screen">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h1>Agente Virtual</h1>
+            <p class="text-muted mt-1 mb-0">Asistente inteligente para búsqueda de repuestos.</p>
+          </div>
+        </div>
+
+        <div class="rx-panel" style="max-width: 800px; margin: 0 auto;">
+          <div class="rx-panel-header">
+            <div class="rx-panel-title">Chat de Asesoramiento</div>
+          </div>
+          <div class="rx-panel-body" style="height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;" id="chatBox">
+            <div class="p-3" style="background: #e0f5f7; color:#0b3a40; border-radius: 12px; max-width: 80%; align-self: flex-start;">
+              Hola, soy el agente de Rolexsa. Escribe un código, marca o medidas del repuesto.
+            </div>
+          </div>
+          <div class="rx-panel-body border-top">
+            <form class="d-flex gap-2" id="chatForm">
+              <input id="chatInput" class="form-control" placeholder="Ej. Necesito un rodamiento 6205">
+              <button class="btn btn-primary" type="submit">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. USUARIOS -->
+      <section id="usuarios" class="screen">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h1>Usuarios y Roles</h1>
+            <p class="text-muted mt-1 mb-0">Control de acceso y personal del sistema.</p>
+          </div>
+          <button class="btn btn-primary" data-alert="Formulario de nuevo usuario simulado">+ Nuevo Usuario</button>
+        </div>
+
+        <div class="rx-panel">
+          <div class="rx-panel-body pb-0">
+            <div class="d-flex gap-2 mb-3">
+              <input type="text" class="form-control" placeholder="Buscar por nombre de usuario..." style="max-width: 300px;">
+              <button class="btn btn-outline-primary">Buscar</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table rx-table">
+              <thead>
+                <tr><th>ID</th><th>Usuario</th><th>Correo</th><th>Rol</th><th>Estado</th><th>Acciones</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td><td>admin</td><td>admin@rolexsa.com</td><td>Administrador</td>
+                  <td><span class="rx-badge rx-badge-ok">Activo</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" data-alert="Editar simulado">Editar</button></td>
+                </tr>
+                <tr>
+                  <td>2</td><td>vendedor1</td><td>ventas@rolexsa.com</td><td>Vendedor</td>
+                  <td><span class="rx-badge rx-badge-ok">Activo</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" data-alert="Editar simulado">Editar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
